@@ -261,3 +261,387 @@ button:active, .btn:active { transform: scale(0.98); }
   border-radius: 2px;
   margin: 14px auto;
 }
+
+/* ---- Phase 2: app shell, nav, dashboard, pages (appended 2026-09-26) ---- */
+
+/* Main content column — leaves room for the fixed bottom nav */
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 22px calc(110px + env(safe-area-inset-bottom));
+  width: 100%;
+}
+
+/* Compact hero on app pages */
+.hero-compact {
+  padding: 44px 22px 40px;
+}
+.date-line {
+  color: var(--gold);
+  font-family: Georgia, serif;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.season-line {
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+/* Bottom nav — 56px+ targets, thumb-friendly */
+.bottom-nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  display: flex;
+  background: var(--green-deep);
+  border-top: 2px solid var(--gold);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.25);
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 64px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+.nav-icon { font-size: 21px; line-height: 1; }
+.nav-active { color: var(--gold); }
+.nav-active .nav-icon { transform: scale(1.12); }
+
+/* Page header */
+.page-head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+.page-head-icon {
+  flex: 0 0 52px;
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  background: var(--green-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+.page-head h1 {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+.page-head .sub {
+  color: var(--muted);
+  font-size: 16px;
+  margin: 0;
+}
+.crumbs {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* Dashboard sections */
+.dash-section { margin-bottom: 30px; }
+.dash-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.dash-section-head h2 {
+  font-size: 21px;
+}
+
+/* Demo badge */
+.demo-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* Prayer card */
+.prayer-card {
+  margin: 0;
+  background: linear-gradient(160deg, var(--green-soft), #fff);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.prayer-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.prayer-text {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--green-deep);
+  margin-bottom: 8px;
+}
+.prayer-card cite { color: var(--muted); font-style: normal; }
+
+/* Lists */
+.birthday-list, .upcoming-list, .absence-list, .feed-list,
+.staff-list, .tally-list, .poll-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.birthday-today {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 16px;
+}
+.upcoming-list li, .absence-list li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+/* Action cards */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 560px) {
+  .action-grid { grid-template-columns: 1fr 1fr; }
+}
+.action-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  min-height: var(--tap);
+  box-shadow: 0 2px 10px rgba(26, 92, 46, 0.06);
+}
+.action-card:active { transform: scale(0.98); }
+.action-icon {
+  flex: 0 0 46px;
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+.action-body { flex: 1; display: flex; flex-direction: column; }
+.action-label { font-weight: 700; font-size: 17px; color: var(--green-deep); }
+.action-blurb { font-size: 15px; color: var(--muted); }
+.action-arrow {
+  color: var(--gold);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Class hub cards */
+.hub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 560px) {
+  .hub-grid { grid-template-columns: 1fr 1fr; }
+}
+.hub-card {
+  background: linear-gradient(160deg, var(--green) 0%, var(--green-deep) 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-decoration: none;
+  min-height: 72px;
+  box-shadow: 0 4px 14px rgba(26, 92, 46, 0.25);
+}
+.hub-card-lg { min-height: 84px; }
+.hub-card:active { transform: scale(0.98); }
+.hub-icon {
+  flex: 0 0 46px;
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  background: rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+.hub-body { flex: 1; display: flex; flex-direction: column; }
+.hub-body strong { font-size: 17px; font-family: Georgia, serif; }
+.hub-body .small { color: rgba(255, 255, 255, 0.8); }
+.hub-card .action-arrow { color: var(--gold); }
+
+/* Roster table — dynamic headers, horizontal scroll on small screens */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  -webkit-overflow-scrolling: touch;
+}
+.roster-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  min-width: 320px;
+}
+.roster-table caption {
+  text-align: left;
+  padding: 12px 16px 4px;
+  color: var(--muted);
+}
+.roster-table th {
+  font-family: Georgia, serif;
+  text-align: left;
+  background: var(--green-soft);
+  color: var(--green-deep);
+  padding: 12px 14px;
+  white-space: nowrap;
+}
+.roster-table td {
+  padding: 12px 14px;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+.roster-table tbody tr:nth-child(even) td {
+  background: rgba(233, 242, 236, 0.35);
+}
+
+/* Poll card */
+.poll-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.poll-card h3 { font-size: 19px; margin-bottom: 10px; }
+.poll-status { font-weight: 700; color: var(--green); margin-bottom: 8px; }
+.poll-options { margin-bottom: 12px; }
+.poll-options li {
+  background: var(--green-soft);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+.poll-card .action-card { margin-top: 8px; }
+
+/* Team feed */
+.feed-post {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.feed-meta { font-size: 15px; margin-bottom: 6px; }
+.feed-message { font-size: 16px; margin: 0; }
+
+/* Staff directory */
+.staff-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.staff-avatar {
+  flex: 0 0 48px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.staff-body { display: flex; flex-direction: column; font-size: 16px; }
+.staff-email { font-size: 15px; margin-top: 2px; word-break: break-all; }
+
+/* Quiz tally bars */
+.tally-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tally-label { flex: 0 0 110px; font-weight: 600; font-size: 15px; }
+.tally-bar {
+  flex: 1;
+  height: 14px;
+  background: var(--green-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.tally-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+  border-radius: 999px;
+}
+.tally-count {
+  flex: 0 0 28px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+/* Loading + error states */
+.skeleton {
+  height: 64px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--line) 25%, #f2f4f1 50%, var(--line) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  margin-bottom: 10px;
+}
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+.error-box {
+  background: #fdf3f3;
+  border: 1px solid #e8b4b4;
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.error-box p { margin-bottom: 14px; }

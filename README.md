@@ -3,9 +3,30 @@
 SolGVR Labs · Steve's first solo project. A multi-tenant faculty hub —
 St. Joseph School Pomona is tenant #1.
 
-**Status (2026-09-25):** Phase 1 — branded "coming online" landing + `/api/sheet`
-serverless proxy with demo fallback. Phase 2 (Sat 2026-09-26): all pages +
-full API wiring. Launch: Sun 2026-09-27 5pm PDT.
+**Status (2026-09-26):** Phase 2 — full v1 app. Dashboard ("Today at
+St. Joseph"), 7 class hubs with dynamic-header rosters, Bulletin Board
+(active poll + team feed), Staff Directory, Document Library, Team Building,
+all wired to `/api/sheet` with demo fallback. Launch: Sun 2026-09-27 5pm PDT.
+
+## Pages (hash routes)
+
+- `#/` — Dashboard: date, liturgical season, prayer intention, birthdays, absences, 6 quick-action forms, 7 class hubs, explore links
+- `#/classes` — Class hub index
+- `#/class/<slug>` — One hub: roster table (dynamic headers) + action links
+- `#/bulletin` — Active poll (Polls tab) + team feed (TeamFeed tab)
+- `#/directory` — 12 staff, config-driven
+- `#/library` — 3 key documents
+- `#/team` — Working-style quiz link + QuizResults tally
+
+All school-specific data (staff, form URLs, doc URLs, tab names, class hubs)
+lives in `src/config/school.ts` — St. Joseph is tenant #1. Writes are
+Google-Form deep links only (no custom write API in v1).
+
+## Demo data
+
+`/api/sheet` serves checked-in demo payloads (`src/data/fallback.ts`) until
+`APPS_SCRIPT_URL` + `APPS_SCRIPT_TOKEN` are set. Demo data only — no real
+student names anywhere, ever (Gate E).
 
 ## Stack
 

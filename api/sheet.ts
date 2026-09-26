@@ -38,7 +38,24 @@ const TABS = [
 ] as const;
 
 function demoResponse(tab: string): unknown | undefined {
-  return FALLBACK_SHEETS[tab];
+  const payload = FALLBACK_SHEETS[tab];
+  if (!payload) return undefined;
+  // Demo-only nicety: the Birthdays fallback carries one row with
+  // "*MONTH*" / "*DAY*" tokens so the dashboard's "today's birthdays"
+  // section always has a demo entry to show. Swap them for today's real
+  // month/day here at request time. Never touches live sheet data.
+  if (tab === "Birthdays") {
+    const now = new Date();
+    return {
+      ...payload,
+      rows: payload.rows.map((row) => ({
+        ...row,
+        month: row.month === "*MONTH*" ? String(now.getMonth() + 1) : row.month,
+        day: row.day === "*DAY*" ? String(now.getDate()) : row.day,
+      })),
+    };
+  }
+  return payload;
 }
 
 const cache = new Map<string, { expires: number; body: unknown }>();
