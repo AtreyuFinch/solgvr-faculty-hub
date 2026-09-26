@@ -13,8 +13,8 @@
  *   ?tab=_ping -> { ok, time, tabs, demo? }
  *   ?tab=<Tab>  -> { tab, headers: [...], rows: [{ header: value, ... }] }
  */
-import type { VercelRequest, VercelResponse } from "./vercel-types";
-import { FALLBACK_SHEETS } from "../src/data/fallback";
+import type { VercelRequest, VercelResponse } from "./vercel-types.js";
+import { FALLBACK_SHEETS } from "../src/data/fallback.js";
 
 const CACHE_TTL_MS = 60_000;
 
@@ -61,11 +61,6 @@ async function fetchFromAppsScript(tab: string): Promise<unknown> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Apps Script HTTP ${res.status}`);
   return res.json();
-}
-
-function demoResponse(tab: string): unknown | undefined {
-  const mod = fallbackModules[`../src/data/fallback/${tab}.json`];
-  return mod?.default;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
